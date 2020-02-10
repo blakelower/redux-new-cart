@@ -26,7 +26,7 @@ export default class GroceryCart extends Component {
               return (
                 <tr key={index} className="stripe-dark">
                   <td>
-                    <button className="f6 link dim br2 ba bw1 ph3 pv2 mb2 dib dark-blue">Remove from Cart</button>
+                    <button className="f6 link dim br2 ba bw1 ph3 pv2 mb2 dib dark-blue" onClick={() => this.props.removeFromCart(index)}>Remove Cart</button>
                   </td>
                   <td className="pa3">{item.price}</td>
                   <td className="pa3">{item.name}</td>

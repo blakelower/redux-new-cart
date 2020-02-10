@@ -10,10 +10,16 @@ export default class App extends Component {
       cart: []
     };
     this.addToCart = this.addToCart.bind(this)
+    this.removeFromCart = this.removeFromCart.bind(this)
   }
 
   addToCart(item){
     const cart = [...this.state.cart, item]
+    this.setState({cart})
+  }
+  removeFromCart(index){
+    const cart = [...this.state.cart]
+    cart.splice(index, 1)
     this.setState({cart})
   }
 
@@ -23,7 +29,7 @@ export default class App extends Component {
         <h1>Grocery Cart</h1>
         <div id="grocery-container">
         <GroceryItems addToCart={this.addToCart}/>
-        <GroceryCart items={this.state.cart} />
+        <GroceryCart items={this.state.cart} removeFromCart={this.removeFromCart}/>
         </div>
       </div>
     );
