@@ -1,6 +1,7 @@
 import React, { Component } from "react";
+import {connect} from 'react-redux';
 
-export default class GroceryItems extends Component {
+class GroceryItem extends Component {
   render() {
     return (
       <div id="grocery-items">
@@ -11,7 +12,7 @@ export default class GroceryItems extends Component {
               <th className="fw6 tl pa3 bg-white">Item Price</th>
               <th className="pa3">Item Name</th>
             </tr>
-            {GROCERY_ITEMS.map((item, index) => {
+            {this.props.items.map((item, index) => {
               return (
                 <tr id={index} className="stripe-dark">
                   <td>
@@ -29,22 +30,21 @@ export default class GroceryItems extends Component {
   }
 }
 
-const GROCERY_ITEMS = [
-  { name: "Sliced Bacon", price: "$5.79" },
-  { name: "Apples", price: "$.99/lb" },
-  { name: "Avocados", price: "$2.00" },
-  { name: "Strawberries", price: "1.99" },
-  { name: "Grass Fed Cheese", price: "$5.99" },
-  { name: "Grass Fed Greek Yogurt", price: "$3.59" },
-  { name: "Arugula", price: "$2.50" },
-  { name: "Spinach", price: "$2.25/8oz bag" },
-  { name: "Tuna", price: "$1.49 can" },
-  { name: "Pork Chops", price: "$1.99/lb" },
-  { name: "Chicken Breast", price: "$2.99/lb" },
-  { name: "Shrimp", price: "$5.99/lb" },
-  { name: "Eggs", price: "$1.79" },
-  { name: "Grass Fed Butter", price: "$3.19" },
-  { name: "Prosciutto", price: "$3.99/4oz" },
-  { name: "Oranges", price: "$1.99/lb" },
-  { name: "Ground Beef", price: "$2.99/lb" }
-];
+
+
+function mapStateToProps(state){
+    return{
+        items: state.forSale
+    }
+}
+function mapDispatchToProps(dispatch){
+    return{
+        addToCart: (item) => {
+            dispatch({
+                type: 'ADD_TO_CART',
+                item
+            })
+        }
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(GroceryItem)
