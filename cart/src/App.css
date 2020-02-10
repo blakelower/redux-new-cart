@@ -6973,4 +6973,13 @@ code {
   .v-btm-l {
     vertical-align: bottom;
   }
+  #grocery-cart,
+  #grocery-items{
+    width: 48%;
+    margin: 1%;
+  }
+  #grocery-container{
+    display: flex;
+    justify-content: center;
+  }
 }
