@@ -1,21 +1,13 @@
 const GROCERY_ITEMS = [
   { name: "Sliced Bacon", price: 5.79 },
-  { name: "Apples", price: 0.99 },
-  { name: "Avocados", price: 2.0 },
+  { name: "Apples", price: 1.25 },
+  { name: "Avocados", price: 2.25 },
   { name: "Strawberries", price: 1.99 },
   { name: "Grass Fed Cheese", price: 5.99 },
   { name: "Grass Fed Greek Yogurt", price: 3.59 },
-  { name: "Arugula", price: 2.5 },
+  { name: "Arugula", price: 2.25 }, //made an array
   { name: "Spinach", price: 2.25 },
-  { name: "Tuna", price: 1.49 },
-  { name: "Pork Chops", price: 1.99 },
-  { name: "Chicken Breast", price: 2.99 },
-  { name: "Shrimp", price: 5.99 },
-  { name: "Eggs", price: 1.79 },
-  { name: "Grass Fed Butter", price: 3.19 },
-  { name: "Prosciutto", price: 3.99 },
-  { name: "Oranges", price: 1.99 },
-  { name: "Ground Beef", price: 2.99 }
+  { name: "Tuna", price: 1.49 }
 ];
 
 const cartReducer = (state, action) => {
@@ -41,7 +33,7 @@ const cartReducer = (state, action) => {
       return {
         ...state,
         cart
-      }
+      };
     }
     default: {
       return state;

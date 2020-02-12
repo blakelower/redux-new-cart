@@ -1,19 +1,20 @@
 import React, { Component } from "react";
-import {connect} from 'react-redux'
+import { connect } from "react-redux";
 
 class GroceryCart extends Component {
-    total(){
-        return this.props.items.reduce((total, item) => {
-            return total + item.price
-        }, 0)
-    }
+  total() {
+    return this.props.items.reduce((total, item) => {
+      return total + item.price;
+    }, 0);
+  }
   render() {
-      if(this.props.items.length === 0){
-          return<div >
-              <p>Cart is empty</p>
-
-          </div>
-      }
+    if (this.props.items.length === 0) {
+      return (
+        <div>
+          <p>Cart is empty</p>
+        </div>
+      );
+    }
     return (
       <div id="grocery-cart">
         <table className="overflow-auto">
@@ -27,7 +28,12 @@ class GroceryCart extends Component {
               return (
                 <tr key={index} className="stripe-dark">
                   <td>
-                    <button className="f6 link dim br2 ba bw1 ph3 pv2 mb2 dib dark-blue" onClick={() => this.props.removeFromCart(index)}>Remove Cart</button>
+                    <button
+                      className="f6 link dim br2 ba bw1 ph3 pv2 mb2 dib dark-blue"
+                      onClick={() => this.props.removeFromCart(index)}
+                    >
+                      Remove Cart
+                    </button>
                   </td>
                   <td className="pa3">{item.price}</td>
                   <td className="pa3">{item.name}</td>
@@ -36,24 +42,24 @@ class GroceryCart extends Component {
             })}
           </tbody>
         </table>
-        <p>Total: ${this.total()}</p>
+        <h1>Total: ${this.total()}</h1>
       </div>
     );
   }
 }
-function mapStateToProps(state){
-  return{
-      items: state.cart
-  }
+function mapStateToProps(state) {
+  return {
+    items: state.cart
+  };
 }
-function mapDispatchToProps(dispatch){
-  return{
-      removeFromCart: (index) => {
-          dispatch({
-              type: 'REMOVE_FROM_CART',
-              index
-          })
-      }
-  }
+function mapDispatchToProps(dispatch) {
+  return {
+    removeFromCart: index => {
+      dispatch({
+        type: "REMOVE_FROM_CART",
+        index
+      });
+    }
+  };
 }
-export default connect(mapStateToProps, mapDispatchToProps)(GroceryCart)
+export default connect(mapStateToProps, mapDispatchToProps)(GroceryCart);
